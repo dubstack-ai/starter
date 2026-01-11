@@ -139,7 +139,7 @@
         "tab": "Guides",
         "icon": "book-open",
         "default": true,
-        "pages": [
+        "groups": [
           {
             "group": "Getting Started",
             "icon": "rocket",
@@ -160,7 +160,7 @@
       {
         "tab": "API Reference",
         "icon": "code",
-        "pages": [
+        "groups": [
           {
             "group": "Endpoints",
             "icon": "code",
@@ -177,28 +177,6 @@
       {
         "label": "Docs",
         "href": "/docs"
-      }
-    ],
-    "sidebar": [
-      {
-        "group": "Getting Started",
-        "icon": "rocket",
-        "pages": ["index", "quickstart", "development"]
-      },
-      {
-        "group": "Essentials",
-        "icon": "layers",
-        "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/navigation", "essentials/reusable-snippets", "essentials/settings"]
-      },
-      {
-        "group": "API Reference",
-        "icon": "code",
-        "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
-      },
-      {
-        "group": "AI Tools",
-        "icon": "sparkles",
-        "pages": ["ai-tools/claude-code", "ai-tools/cursor", "ai-tools/windsurf"]
       }
     ]
   },
