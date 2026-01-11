@@ -136,13 +136,15 @@
     ],
     "tabs": [
       {
-        "name": "Guides",
+        "tab": "Guides",
         "icon": "book-open",
-        "default": true
+        "default": true,
+        "pages": ["introduction", "quickstart", "development"]
       },
       {
-        "name": "API Reference",
-        "icon": "code"
+        "tab": "API Reference",
+        "icon": "code",
+        "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
       }
     ],
     "header": [
@@ -157,113 +159,24 @@
     ],
     "sidebar": [
       {
-        "section": "Getting Started",
+        "group": "Getting Started",
         "icon": "rocket",
-        "items": [
-          {
-            "label": "Introduction",
-            "href": "/",
-            "icon": "book"
-          },
-          {
-            "label": "Quick Start",
-            "href": "/quickstart",
-            "icon": "zap"
-          },
-          {
-            "label": "Development",
-            "href": "/development",
-            "icon": "code"
-          }
-        ]
+        "pages": ["introduction", "quickstart", "development"]
       },
       {
-        "section": "Essentials",
+        "group": "Essentials",
         "icon": "layers",
-        "items": [
-          {
-            "label": "MDX Components",
-            "href": "/essentials/markdown",
-            "icon": "shapes"
-          },
-          {
-            "label": "Code Blocks",
-            "href": "/essentials/code",
-            "icon": "code"
-          },
-          {
-            "label": "Images & Media",
-            "href": "/essentials/images",
-            "icon": "image"
-          },
-          {
-            "label": "Navigation",
-            "href": "/essentials/navigation",
-            "icon": "map"
-          },
-          {
-            "label": "Reusable Snippets",
-            "href": "/essentials/reusable-snippets",
-            "icon": "recycle"
-          },
-          {
-            "label": "Settings",
-            "href": "/essentials/settings",
-            "icon": "gear"
-          }
-        ]
+        "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/navigation", "essentials/reusable-snippets", "essentials/settings"]
       },
       {
-        "section": "API Reference",
+        "group": "API Reference",
         "icon": "code",
-        "items": [
-          {
-            "label": "Introduction",
-            "href": "/api-reference/introduction",
-            "icon": "book"
-          },
-          {
-            "label": "GET Endpoint",
-            "href": "/api-reference/endpoint/get",
-            "icon": "arrow-down"
-          },
-          {
-            "label": "POST Endpoint",
-            "href": "/api-reference/endpoint/create",
-            "icon": "arrow-up"
-          },
-          {
-            "label": "DELETE Endpoint",
-            "href": "/api-reference/endpoint/delete",
-            "icon": "trash"
-          },
-          {
-            "label": "Webhooks",
-            "href": "/api-reference/endpoint/webhook",
-            "icon": "webhook"
-          }
-        ]
+        "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
       },
       {
-        "section": "AI Tools",
+        "group": "AI Tools",
         "icon": "sparkles",
-        "items": [
-          {
-            "label": "Claude Code",
-            "href": "/ai-tools/claude-code",
-            "icon": "terminal"
-          },
-          {
-            "label": "Cursor",
-            "href": "/ai-tools/cursor",
-            "icon": "arrow-pointer"
-          },
-          {
-            "label": "Windsurf",
-            "href": "/ai-tools/windsurf",
-            "icon": "wind"
-          }
-        ]
+        "pages": ["ai-tools/claude-code", "ai-tools/cursor", "ai-tools/windsurf"]
       }
     ]
   },
