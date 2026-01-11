@@ -125,12 +125,12 @@
     "anchors": [
       {
         "name": "Documentation",
-        "url": "https://docs.dubstack.dev",
+        "url": "https://docs.dubstack.ai",
         "icon": "book"
       },
       {
         "name": "Blog",
-        "url": "https://blog.dubstack.dev",
+        "url": "https://blogs.dubstack.ai",
         "icon": "newspaper"
       }
     ],
@@ -139,7 +139,7 @@
         "tab": "Guides",
         "icon": "book-open",
         "default": true,
-        "pages": ["introduction", "quickstart", "development"]
+        "pages": ["index", "quickstart", "development"]
       },
       {
         "tab": "API Reference",
@@ -161,7 +161,7 @@
       {
         "group": "Getting Started",
         "icon": "rocket",
-        "pages": ["introduction", "quickstart", "development"]
+        "pages": ["index", "quickstart", "development"]
       },
       {
         "group": "Essentials",
