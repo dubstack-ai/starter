@@ -10,6 +10,33 @@
     "favicon": "/img/favicon.ico",
     "timezone": "UTC"
   },
+  "anchors": [
+    {
+      "name": "Documentation",
+      "url": "https://docs.dubstack.dev",
+      "icon": "book"
+    },
+    {
+      "name": "Blog",
+      "url": "https://blog.dubstack.dev",
+      "icon": "newspaper"
+    }
+  ],
+  "tabs": [
+    {
+      "name": "Guides",
+      "icon": "book-open",
+      "default": true
+    },
+    {
+      "name": "API Reference",
+      "icon": "code"
+    }
+  ],
+  "topbarCtaButton": {
+    "label": "Get Started",
+    "href": "/quickstart"
+  },
   "theme": {
     "colors": {
       "primary": "#ff6b35",
