@@ -139,12 +139,34 @@
         "tab": "Guides",
         "icon": "book-open",
         "default": true,
-        "pages": ["index", "quickstart", "development"]
+        "pages": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": ["index", "quickstart", "development"]
+          },
+          {
+            "group": "Essentials",
+            "icon": "layers",
+            "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/navigation", "essentials/reusable-snippets", "essentials/settings"]
+          },
+          {
+            "group": "AI Tools",
+            "icon": "sparkles",
+            "pages": ["ai-tools/claude-code", "ai-tools/cursor", "ai-tools/windsurf"]
+          }
+        ]
       },
       {
         "tab": "API Reference",
         "icon": "code",
-        "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
+        "pages": [
+          {
+            "group": "Endpoints",
+            "icon": "code",
+            "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
+          }
+        ]
       }
     ],
     "header": [
