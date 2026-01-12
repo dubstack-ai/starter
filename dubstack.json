@@ -141,7 +141,7 @@
         "default": true,
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Getting started",
             "icon": "rocket",
             "pages": [
               { "slug": "index", "icon": "house" },
@@ -150,37 +150,49 @@
             ]
           },
           {
-            "group": "Essentials",
-            "icon": "layers",
+            "group": "Customization",
+            "icon": "gear",
             "pages": [
-              { "slug": "essentials/markdown", "icon": "file" },
-              { "slug": "essentials/code", "icon": "code" },
-              { "slug": "essentials/images", "icon": "image" },
-              { "slug": "essentials/navigation", "icon": "map" },
-              { "slug": "essentials/reusable-snippets", "icon": "recycle" },
-              { "slug": "essentials/settings", "icon": "gear" }
+              { "slug": "essentials/settings", "icon": "gear" },
+              { "slug": "essentials/navigation", "icon": "map" }
             ]
           },
           {
-            "group": "AI Tools",
+            "group": "Writing content",
+            "icon": "file-text",
+            "pages": [
+              { "slug": "essentials/markdown", "icon": "file-text" },
+              { "slug": "essentials/code", "icon": "code" },
+              { "slug": "essentials/images", "icon": "image" },
+              { "slug": "essentials/reusable-snippets", "icon": "recycle" }
+            ]
+          },
+          {
+            "group": "AI tools",
             "icon": "sparkles",
             "pages": [
-              { "slug": "ai-tools/claude-code", "icon": "terminal" },
               { "slug": "ai-tools/cursor", "icon": "arrow-pointer" },
+              { "slug": "ai-tools/claude-code", "icon": "terminal" },
               { "slug": "ai-tools/windsurf", "icon": "wind" }
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "API reference",
         "icon": "code",
         "groups": [
           {
-            "group": "Endpoints",
+            "group": "API documentation",
+            "icon": "book",
+            "pages": [
+              { "slug": "api-reference/introduction", "icon": "book" }
+            ]
+          },
+          {
+            "group": "Endpoint examples",
             "icon": "code",
             "pages": [
-              { "slug": "api-reference/introduction", "icon": "book" },
               { "slug": "api-reference/endpoint/get", "icon": "arrow-down" },
               { "slug": "api-reference/endpoint/create", "icon": "plus" },
               { "slug": "api-reference/endpoint/delete", "icon": "trash" },
@@ -201,13 +213,12 @@
       }
     ],
     "sidebar": [
-      { "group": "Getting Started", "icon": "rocket" },
-      { "group": "Essentials", "icon": "layers" },
-      { "group": "AI Tools", "icon": "sparkles" },
-      { "group": "Api Reference", "icon": "code" },
-      { "group": "Endpoints", "icon": "code" },
-      { "group": "Docs", "icon": "file" },
-      { "group": "Snippets", "icon": "bookmark" }
+      { "group": "Getting started", "icon": "rocket" },
+      { "group": "Customization", "icon": "gear" },
+      { "group": "Writing content", "icon": "file-text" },
+      { "group": "AI tools", "icon": "sparkles" },
+      { "group": "API documentation", "icon": "book" },
+      { "group": "Endpoint examples", "icon": "code" }
     ]
   },
   "homepage": {
