@@ -143,17 +143,32 @@
           {
             "group": "Getting Started",
             "icon": "rocket",
-            "pages": ["index", "quickstart", "development"]
+            "pages": [
+              { "slug": "index", "icon": "house" },
+              { "slug": "quickstart", "icon": "zap" },
+              { "slug": "development", "icon": "terminal" }
+            ]
           },
           {
             "group": "Essentials",
             "icon": "layers",
-            "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/navigation", "essentials/reusable-snippets", "essentials/settings"]
+            "pages": [
+              { "slug": "essentials/markdown", "icon": "file" },
+              { "slug": "essentials/code", "icon": "code" },
+              { "slug": "essentials/images", "icon": "image" },
+              { "slug": "essentials/navigation", "icon": "map" },
+              { "slug": "essentials/reusable-snippets", "icon": "recycle" },
+              { "slug": "essentials/settings", "icon": "gear" }
+            ]
           },
           {
             "group": "AI Tools",
             "icon": "sparkles",
-            "pages": ["ai-tools/claude-code", "ai-tools/cursor", "ai-tools/windsurf"]
+            "pages": [
+              { "slug": "ai-tools/claude-code", "icon": "terminal" },
+              { "slug": "ai-tools/cursor", "icon": "arrow-pointer" },
+              { "slug": "ai-tools/windsurf", "icon": "wind" }
+            ]
           }
         ]
       },
@@ -164,7 +179,13 @@
           {
             "group": "Endpoints",
             "icon": "code",
-            "pages": ["api-reference/introduction", "api-reference/endpoint/get", "api-reference/endpoint/create", "api-reference/endpoint/delete", "api-reference/endpoint/webhook"]
+            "pages": [
+              { "slug": "api-reference/introduction", "icon": "book" },
+              { "slug": "api-reference/endpoint/get", "icon": "arrow-down" },
+              { "slug": "api-reference/endpoint/create", "icon": "plus" },
+              { "slug": "api-reference/endpoint/delete", "icon": "trash" },
+              { "slug": "api-reference/endpoint/webhook", "icon": "webhook" }
+            ]
           }
         ]
       }
