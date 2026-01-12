@@ -178,6 +178,15 @@
         "label": "Docs",
         "href": "/docs"
       }
+    ],
+    "sidebar": [
+      { "group": "Getting Started", "icon": "rocket" },
+      { "group": "Essentials", "icon": "layers" },
+      { "group": "AI Tools", "icon": "sparkles" },
+      { "group": "Api Reference", "icon": "code" },
+      { "group": "Endpoints", "icon": "code" },
+      { "group": "Docs", "icon": "file" },
+      { "group": "Snippets", "icon": "bookmark" }
     ]
   },
   "homepage": {
