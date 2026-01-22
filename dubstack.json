@@ -42,6 +42,10 @@
       "radius": 18,
       "syntax_theme": "github-dark"
     },
+    "inline_code": {
+      "text_dark": "#ffffff",
+      "text_light": "#18181b"
+    },
     "scrollbar": {
       "track_dark": "#1a1a1a",
       "thumb_dark": "#404040",
