@@ -53,7 +53,17 @@
     "search": {
       "enabled": true,
       "placeholder": "Search...",
-      "position": "sidebar"
+      "position": "sidebar",
+      "background_color": "#18171A",
+      "text_color": "#f3f4f6",
+      "border_color": "#ffffff14",
+      "border_radius": 8,
+      "height": 48,
+      "width": 400,
+      "blur_background": true,
+      "blur_amount": 12,
+      "overlay_opacity": 0.6,
+      "animation_style": "fade"
     },
     "assistant": {
       "title": "Assistant",
