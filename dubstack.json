@@ -145,6 +145,7 @@
     "last_updated": "2025-12-30T02:00:00.000Z"
   },
   "navigation": {
+    "auto_generate": false,
     "anchors": [
       {
         "name": "Documentation",
