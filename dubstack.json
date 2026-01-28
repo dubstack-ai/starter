@@ -168,36 +168,72 @@
             "group": "Getting started",
             "icon": "rocket",
             "pages": [
-              { "slug": "index", "icon": "house" },
-              { "slug": "quickstart", "icon": "zap" },
-              { "slug": "development", "icon": "terminal" }
+              {
+                "slug": "index",
+                "icon": "house"
+              },
+              {
+                "slug": "quickstart",
+                "icon": "zap"
+              },
+              {
+                "slug": "development",
+                "icon": "terminal"
+              }
             ]
           },
           {
             "group": "Customization",
             "icon": "gear",
             "pages": [
-              { "slug": "essentials/settings", "icon": "gear" },
-              { "slug": "essentials/navigation", "icon": "map" }
+              {
+                "slug": "essentials/settings",
+                "icon": "gear"
+              },
+              {
+                "slug": "essentials/navigation",
+                "icon": "map"
+              }
             ]
           },
           {
             "group": "Writing content",
             "icon": "file-text",
             "pages": [
-              { "slug": "essentials/markdown", "icon": "file-text" },
-              { "slug": "essentials/code", "icon": "code" },
-              { "slug": "essentials/images", "icon": "image" },
-              { "slug": "essentials/reusable-snippets", "icon": "recycle" }
+              {
+                "slug": "essentials/markdown",
+                "icon": "file-text"
+              },
+              {
+                "slug": "essentials/code",
+                "icon": "code"
+              },
+              {
+                "slug": "essentials/images",
+                "icon": "image"
+              },
+              {
+                "slug": "essentials/reusable-snippets",
+                "icon": "recycle"
+              }
             ]
           },
           {
             "group": "AI tools",
             "icon": "sparkles",
             "pages": [
-              { "slug": "ai-tools/cursor", "icon": "arrow-pointer" },
-              { "slug": "ai-tools/claude-code", "icon": "terminal" },
-              { "slug": "ai-tools/windsurf", "icon": "wind" }
+              {
+                "slug": "ai-tools/cursor",
+                "icon": "arrow-pointer"
+              },
+              {
+                "slug": "ai-tools/claude-code",
+                "icon": "terminal"
+              },
+              {
+                "slug": "ai-tools/windsurf",
+                "icon": "wind"
+              }
             ]
           }
         ]
@@ -210,17 +246,32 @@
             "group": "API documentation",
             "icon": "book",
             "pages": [
-              { "slug": "api-reference/introduction", "icon": "book" }
+              {
+                "slug": "api-reference/introduction",
+                "icon": "book"
+              }
             ]
           },
           {
             "group": "Endpoint examples",
             "icon": "code",
             "pages": [
-              { "slug": "api-reference/endpoint/get", "icon": "arrow-down" },
-              { "slug": "api-reference/endpoint/create", "icon": "plus" },
-              { "slug": "api-reference/endpoint/delete", "icon": "trash" },
-              { "slug": "api-reference/endpoint/webhook", "icon": "webhook" }
+              {
+                "slug": "api-reference/endpoint/get",
+                "icon": "arrow-down"
+              },
+              {
+                "slug": "api-reference/endpoint/create",
+                "icon": "plus"
+              },
+              {
+                "slug": "api-reference/endpoint/delete",
+                "icon": "trash"
+              },
+              {
+                "slug": "api-reference/endpoint/webhook",
+                "icon": "webhook"
+              }
             ]
           }
         ]
@@ -237,12 +288,30 @@
       }
     ],
     "sidebar": [
-      { "group": "Getting started", "icon": "rocket" },
-      { "group": "Customization", "icon": "gear" },
-      { "group": "Writing content", "icon": "file-text" },
-      { "group": "AI tools", "icon": "sparkles" },
-      { "group": "API documentation", "icon": "book" },
-      { "group": "Endpoint examples", "icon": "code" }
+      {
+        "group": "Getting started",
+        "icon": "rocket"
+      },
+      {
+        "group": "Customization",
+        "icon": "gear"
+      },
+      {
+        "group": "Writing content",
+        "icon": "file-text"
+      },
+      {
+        "group": "AI tools",
+        "icon": "sparkles"
+      },
+      {
+        "group": "API documentation",
+        "icon": "book"
+      },
+      {
+        "group": "Endpoint examples",
+        "icon": "code"
+      }
     ]
   },
   "homepage": {
@@ -260,13 +329,54 @@
   "sections": {},
   "footer": {
     "use_theme_studio": false,
-    "style": "none",
+    "style": "default",
     "socials": {
-      "github": "",
       "x": "",
+      "github": "https://github.com/dubstack-ai",
       "linkedin": ""
     },
-    "columns": [],
+    "columns": [
+      {
+        "heading": "Resources",
+        "links": [
+          {
+            "label": "Documentation",
+            "href": "/docs",
+            "external": false
+          }
+        ]
+      },
+      {
+        "heading": "Company",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "external": false
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "external": false
+          }
+        ]
+      },
+      {
+        "heading": "Legal",
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "href": "/privacy",
+            "external": false
+          },
+          {
+            "label": "Terms of Service",
+            "href": "/terms",
+            "external": false
+          }
+        ]
+      }
+    ],
     "branding": {
       "show_powered_by": true
     }
