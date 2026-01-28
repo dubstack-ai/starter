@@ -379,6 +379,10 @@
     ],
     "branding": {
       "show_powered_by": true
+    },
+    "logo": {
+      "dark": "/logo/starter-dark.svg",
+      "light": "/logo/starter-light.svg"
     }
   },
   "seo": {
@@ -412,4 +416,3 @@
     "require_auth_for_docs": false
   }
 }
-
