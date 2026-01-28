@@ -259,8 +259,17 @@
   },
   "sections": {},
   "footer": {
-    "socials": {},
-    "links": []
+    "use_theme_studio": false,
+    "style": "none",
+    "socials": {
+      "github": "",
+      "x": "",
+      "linkedin": ""
+    },
+    "columns": [],
+    "branding": {
+      "show_powered_by": true
+    }
   },
   "seo": {
     "title_template": "%s | dubstack",
