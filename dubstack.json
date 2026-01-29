@@ -329,13 +329,53 @@
   "sections": {},
   "footer": {
     "use_theme_studio": false,
-    "style": "None",
+    "style": "3 columns",
     "socials": {
       "x": "",
       "github": "https://github.com/dubstack-ai",
       "linkedin": ""
     },
-    "columns": [],
+    "columns": [
+      {
+        "header": "Resources",
+        "links": [
+          {
+            "label": "Documentation",
+            "url": "/quickstart"
+          },
+          {
+            "label": "API Reference",
+            "url": "/api-reference"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "links": [
+          {
+            "label": "About",
+            "url": "/about"
+          },
+          {
+            "label": "Blog",
+            "url": "/blog"
+          }
+        ]
+      },
+      {
+        "header": "Legal",
+        "links": [
+          {
+            "label": "Privacy",
+            "url": "/privacy"
+          },
+          {
+            "label": "Terms",
+            "url": "/terms"
+          }
+        ]
+      }
+    ],
     "branding": {
       "show_powered_by": true
     },
