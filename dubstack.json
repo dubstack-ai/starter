@@ -338,6 +338,10 @@
     "columns": [],
     "branding": {
       "show_powered_by": true
+    },
+    "logo": {
+      "dark": "/logo/starter-dark.svg",
+      "light": "/logo/starter-light.svg"
     }
   },
   "seo": {
