@@ -1,0 +1,114 @@
+---
+title: "Twoslash Demo"
+description: "TypeScript type annotations in code blocks"
+---
+
+# Twoslash Demo
+
+This page demonstrates Twoslash - TypeScript type annotations that show types on hover.
+
+## Type Queries
+
+Use `// ^?` to show the inferred type of a variable:
+
+```typescript twoslash
+const greeting = "Hello, DubStack!";
+//    ^?
+
+const numbers = [1, 2, 3, 4, 5];
+//    ^?
+
+const user = {
+  name: "Alice",
+  age: 30,
+  admin: false
+};
+//    ^?
+```
+
+## Function Types
+
+See the full function signature:
+
+```ts twoslash
+function greet(name: string, times: number = 1): string {
+  return `Hello, ${name}!`.repeat(times);
+}
+//      ^?
+
+const result = greet("World", 3);
+//    ^?
+```
+
+## Object Types
+
+Complex object types are displayed clearly:
+
+```typescript twoslash
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: "admin" | "user" | "guest";
+}
+
+const currentUser: User = {
+  id: 1,
+  name: "Alice",
+  email: "alice@example.com",
+  role: "admin"
+};
+//    ^?
+```
+
+## Array Methods
+
+See return types of array methods:
+
+```ts twoslash
+const numbers = [1, 2, 3, 4, 5];
+
+const doubled = numbers.map(n => n * 2);
+//    ^?
+
+const evenNumbers = numbers.filter(n => n % 2 === 0);
+//    ^?
+
+const sum = numbers.reduce((a, b) => a + b, 0);
+//  ^?
+```
+
+## Generic Types
+
+Twoslash shows generic type parameters:
+
+```typescript twoslash
+function identity<T>(value: T): T {
+  return value;
+}
+
+const numIdentity = identity(42);
+//    ^?
+
+const strIdentity = identity("hello");
+//    ^?
+
+const objIdentity = identity({ x: 1, y: 2 });
+//    ^?
+```
+
+## Async Functions
+
+Promise types are clearly shown:
+
+```ts twoslash
+async function fetchUser(id: number) {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json() as Promise<{ name: string; age: number }>;
+}
+
+const userPromise = fetchUser(1);
+//    ^?
+```
+
+This feature makes it easy for readers to understand TypeScript types without leaving the documentation!
