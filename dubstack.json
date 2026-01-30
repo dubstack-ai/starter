@@ -74,7 +74,7 @@
       "welcome_title": "Hi! How can I help you today?",
       "welcome_subtitle": "Ask me anything about the docs, code samples, or best practices.",
       "logo_url": "/img/assistant-star.svg",
-      "watermark_logo_url": "/img/dubstack-colour.svg",
+      "watermark_logo_url": "/logo/light.svg",
       "background_color": "#0e0e10",
       "width": 300
     }
