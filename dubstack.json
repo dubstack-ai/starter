@@ -219,6 +219,10 @@
               {
                 "slug": "essentials/reusable-snippets",
                 "icon": "recycle"
+              },
+              {
+                "slug": "essentials/twoslash-demo",
+                "icon": "code"
               }
             ]
           },
