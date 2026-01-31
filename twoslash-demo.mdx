@@ -13,12 +13,12 @@ TypeScript automatically infers types. Hover over the underlined variables to se
 
 ```typescript twoslash
 const config = {
+//    ^?
   apiKey: "sk-123456",
   baseUrl: "https://api.example.com",
   timeout: 5000,
   retries: 3
 };
-//    ^?
 
 const response = fetch(config.baseUrl);
 //    ^?
@@ -89,7 +89,7 @@ const evens = numbers.filter(n => n % 2 === 0);
 //    ^?
 
 const sum = numbers.reduce((acc, n) => acc + n, 0);
-//    ^?
+//  ^?
 
 const strings = numbers.map(String);
 //    ^?
