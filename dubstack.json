@@ -287,8 +287,8 @@
         "href": "/"
       },
       {
-        "label": "Docs",
-        "href": "/docs"
+        "label": "Quickstart",
+        "href": "/quickstart"
       }
     ],
     "sidebar": [
@@ -362,7 +362,7 @@
           },
           {
             "label": "Blog",
-            "url": "/blog"
+            "url": "/blogs"
           }
         ]
       },
