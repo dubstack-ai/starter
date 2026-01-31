@@ -5,23 +5,23 @@ description: "Hover over identifiers to see their inferred types"
 
 # TypeScript Hover Types
 
-Hover over any highlighted identifier to see its type. This helps you understand TypeScript's type inference without leaving the docs.
+Hover over any **underlined identifier** to see its type. This demonstrates TypeScript's type inference in action.
 
 ## Inferred Types
 
-TypeScript infers types automatically. Hover to see what it infers:
+TypeScript automatically infers types. Hover over the underlined variables to see their types:
 
 ```typescript twoslash
-// Hover over 'config' to see the full inferred type
 const config = {
   apiKey: "sk-123456",
   baseUrl: "https://api.example.com",
   timeout: 5000,
   retries: 3
 };
+//    ^?
 
-// Hover over 'response' to see Promise<Response>
 const response = fetch(config.baseUrl);
+//    ^?
 ```
 
 ## Function Signatures
@@ -36,8 +36,8 @@ interface User {
   role: "admin" | "user" | "guest";
 }
 
-// Hover over 'createUser' to see the full signature
 function createUser(name: string, email: string, role: User["role"] = "user"): User {
+//       ^?
   return {
     id: crypto.randomUUID(),
     name,
@@ -46,29 +46,32 @@ function createUser(name: string, email: string, role: User["role"] = "user"): U
   };
 }
 
-// Hover over 'admin' to see the inferred User type
 const admin = createUser("Alice", "alice@example.com", "admin");
+//    ^?
 ```
 
 ## Generic Types
 
-Hover to see how generics resolve:
+Twoslash shows how generic type parameters resolve:
 
 ```typescript twoslash
-// Hover over 'Result' to see the generic type
 type Result<T, E = Error> =
+//   ^?
   | { success: true; data: T }
   | { success: false; error: E };
 
 function fetchData<T>(url: string): Promise<Result<T>> {
+//       ^?
   return fetch(url)
     .then(res => res.json())
-    .then(data => ({ success: true, data }))
-    .catch(error => ({ success: false, error }));
+    .then(data => ({ success: true as const, data }))
+    .catch(error => ({ success: false as const, error }));
 }
 
-// Hover over 'userResult' - see Result<User[], Error>
-const userResult = fetchData<User[]>("/api/users");
+interface ApiUser { id: string; name: string; }
+
+const userResult = fetchData<ApiUser[]>("/api/users");
+//    ^?
 ```
 
 ## Array Methods
@@ -77,18 +80,19 @@ See return types of array transformations:
 
 ```typescript twoslash
 const numbers = [1, 2, 3, 4, 5];
+//    ^?
 
-// Hover to see: number[]
 const doubled = numbers.map(n => n * 2);
+//    ^?
 
-// Hover to see: number[]
 const evens = numbers.filter(n => n % 2 === 0);
+//    ^?
 
-// Hover to see: number
 const sum = numbers.reduce((acc, n) => acc + n, 0);
+//    ^?
 
-// Hover to see: string[]
 const strings = numbers.map(String);
+//    ^?
 ```
 
-This feature makes TypeScript documentation interactive - you can explore types without running the compiler.
+This feature makes TypeScript documentation interactive - you can explore types without running the compiler!
