@@ -1,98 +1,118 @@
 ---
 title: "TypeScript Hover Types"
-description: "Hover over identifiers to see their inferred types"
+description: "Hover over code to see inferred types - like having an IDE in your docs!"
 ---
 
 # TypeScript Hover Types
 
-Hover over any **underlined identifier** to see its type. This demonstrates TypeScript's type inference in action.
+Hover over any **underlined identifier** to see its type. It's like having VS Code intelligence right in your documentation! 🎉
 
-## Inferred Types
+## Meet the Pets 🐕 🐈
 
-TypeScript automatically infers types. Hover over the underlined variables to see their types:
+TypeScript infers complex nested types. Hover over `dog` to see the full type:
 
 ```typescript twoslash
-const config = {
-//    ^?
-  apiKey: "sk-123456",
-  baseUrl: "https://api.example.com",
-  timeout: 5000,
-  retries: 3
+interface Dog {
+  name: string;
+  breed: string;
+  age: number;
+  favoriteToy: string;
+  owner: {
+    name: string;
+    phone: string;
+  };
+}
+
+const dog: Dog = {
+  name: "Buddy",
+  breed: "Golden Retriever",
+  age: 3,
+  favoriteToy: "tennis ball 🎾",
+  owner: {
+    name: "Alice",
+    phone: "555-1234"
+  }
 };
 
-const response = fetch(config.baseUrl);
-//    ^?
+console.log(`${dog.name} wants to play! 🐕`);
+//            ^?
 ```
 
 ## Function Signatures
 
-See complete function signatures on hover:
+Hover over the function name to see its complete signature:
 
 ```typescript twoslash
-interface User {
-  id: string;
+interface Cat {
   name: string;
-  email: string;
-  role: "admin" | "user" | "guest";
+  color: "orange" | "black" | "white" | "tabby";
+  meowVolume: "quiet" | "normal" | "LOUD";
+  favoriteSpot: string;
 }
 
-function createUser(name: string, email: string, role: User["role"] = "user"): User {
+function feedCat(cat: Cat, food: string): string {
+  return `${cat.name} ate ${food} and says meow! 🐈`;
+}
 //       ^?
-  return {
-    id: crypto.randomUUID(),
-    name,
-    email,
-    role
-  };
-}
 
-const admin = createUser("Alice", "alice@example.com", "admin");
+const whiskers: Cat = {
+  name: "Whiskers",
+  color: "orange",
+  meowVolume: "LOUD",
+  favoriteSpot: "sunny windowsill ☀️"
+};
+
+const result = feedCat(whiskers, "tuna");
 //    ^?
 ```
 
 ## Generic Types
 
-Twoslash shows how generic type parameters resolve:
+See how generics resolve to concrete types:
 
 ```typescript twoslash
-type Result<T, E = Error> =
-//   ^?
-  | { success: true; data: T }
-  | { success: false; error: E };
+type PetResponse<T> = {
+  success: boolean;
+  pet: T;
+  message: string;
+};
 
-function fetchData<T>(url: string): Promise<Result<T>> {
+function adoptPet<T>(pet: T): PetResponse<T> {
+  return {
+    success: true,
+    pet: pet,
+    message: "Congratulations on your new friend! 🎊"
+  };
+}
 //       ^?
-  return fetch(url)
-    .then(res => res.json())
-    .then(data => ({ success: true as const, data }))
-    .catch(error => ({ success: false as const, error }));
+
+interface Puppy {
+  name: string;
+  cuteness: number;
 }
 
-interface ApiUser { id: string; name: string; }
-
-const userResult = fetchData<ApiUser[]>("/api/users");
+const adoption = adoptPet<Puppy>({ name: "Max", cuteness: 100 });
 //    ^?
 ```
 
-## Array Methods
+## Array Transformations
 
-See return types of array transformations:
+Watch how array methods transform types:
 
 ```typescript twoslash
-const numbers = [1, 2, 3, 4, 5];
+const pets = ["Buddy 🐕", "Whiskers 🐈", "Goldie 🐠", "Tweety 🐦"];
 //    ^?
 
-const doubled = numbers.map(n => n * 2);
+const petLengths = pets.map(pet => pet.length);
 //    ^?
 
-const evens = numbers.filter(n => n % 2 === 0);
+const longNames = pets.filter(pet => pet.length > 10);
 //    ^?
 
-const sum = numbers.reduce((acc, n) => acc + n, 0);
-//  ^?
-
-const strings = numbers.map(String);
+const allPets = pets.join(", ");
 //    ^?
 ```
 
-This feature makes TypeScript documentation interactive - you can explore types without running the compiler!
+---
+
+**Pro tip:** This works with any TypeScript code! Your users can explore types without leaving the documentation. 🚀
