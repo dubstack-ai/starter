@@ -337,7 +337,7 @@
   "sections": {},
   "footer": {
     "use_theme_studio": false,
-    "style": "3 columns",
+    "style": "none",
     "socials": {
       "x": "",
       "github": "https://github.com/dubstack-ai",
