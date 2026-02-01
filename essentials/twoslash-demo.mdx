@@ -34,8 +34,10 @@ const dog: Dog = {
   }
 };
 
+dog;
+// ^?
+
 console.log(`${dog.name} wants to play! 🐕`);
-//            ^?
 ```
 
 ## Function Signatures
@@ -53,7 +55,9 @@ interface Cat {
 function feedCat(cat: Cat, food: string): string {
   return `${cat.name} ate ${food} and says meow! 🐈`;
 }
-//       ^?
+
+feedCat;
+// ^?
 
 const whiskers: Cat = {
   name: "Whiskers",
@@ -63,7 +67,8 @@ const whiskers: Cat = {
 };
 
 const result = feedCat(whiskers, "tuna");
-//    ^?
+result;
+// ^?
 ```
 
 ## Generic Types
@@ -84,7 +89,9 @@ function adoptPet<T>(pet: T): PetResponse<T> {
     message: "Congratulations on your new friend! 🎊"
   };
 }
-//       ^?
+
+adoptPet;
+// ^?
 
 interface Puppy {
   name: string;
@@ -92,7 +99,8 @@ interface Puppy {
 }
 
 const adoption = adoptPet<Puppy>({ name: "Max", cuteness: 100 });
-//    ^?
+adoption;
+// ^?
 ```
 
 ## Array Transformations
@@ -101,16 +109,20 @@ Watch how array methods transform types:
 
 ```typescript twoslash
 const pets = ["Buddy 🐕", "Whiskers 🐈", "Goldie 🐠", "Tweety 🐦"];
-//    ^?
+pets;
+// ^?
 
 const petLengths = pets.map(pet => pet.length);
-//    ^?
+petLengths;
+// ^?
 
 const longNames = pets.filter(pet => pet.length > 10);
-//    ^?
+longNames;
+// ^?
 
 const allPets = pets.join(", ");
-//    ^?
+allPets;
+// ^?
 ```
 
 ---
