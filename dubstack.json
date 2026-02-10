@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dubstack.dev/schema/v1.json",
+  "$schema": "https://dubstack.ai/dubstack.json",
   "site": {
     "name": "dubstack",
     "tagline": "Beautiful, AI-powered documentation for modern teams",
@@ -165,7 +165,6 @@
     "tabs": [
       {
         "tab": "Guides",
-        "icon": "book-open",
         "default": true,
         "groups": [
           {
@@ -248,7 +247,6 @@
       },
       {
         "tab": "API reference",
-        "icon": "code",
         "groups": [
           {
             "group": "API documentation",
