@@ -1,16 +1,17 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Documentation API",
-    "description": "A sample API that demonstrates DubStack's API documentation features",
+    "title": "BeatBox API",
+    "description": "A drum machine sandbox API for creating and exploring beat patterns. Ships with the DubStack starter template to demonstrate interactive API playground features including the drum sequencer visualizer.",
+    "version": "1.0.0",
     "license": {
       "name": "MIT"
-    },
-    "version": "1.0.0"
+    }
   },
   "servers": [
     {
-      "url": "https://api.dubstack.com"
+      "url": "https://beatbox.dubstack.ai",
+      "description": "Production sandbox"
     }
   ],
   "security": [
@@ -19,61 +20,42 @@
     }
   ],
   "paths": {
-    "/docs": {
+    "/beats": {
       "get": {
-        "summary": "List documentation pages",
-        "description": "Returns all documentation pages that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
+        "summary": "List beat patterns",
+        "description": "Returns all pre-seeded demo beat patterns. Each pattern includes BPM, kit selection, and track data with 16-step sequences for each instrument.",
+        "operationId": "listBeats",
+        "tags": ["Beats"],
+        "x-dubstack-preview": {
+          "type": "drum-sequencer",
+          "dataPath": "$.beats[0].tracks",
+          "metaPaths": {
+            "bpm": "$.beats[0].bpm",
+            "kit": "$.beats[0].kit",
+            "name": "$.beats[0].name"
           },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Number of results to skip for pagination",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
-            }
-          }
-        ],
+          "clientRender": true,
+          "fallback": "json"
+        },
         "responses": {
           "200": {
-            "description": "Documentation pages retrieved successfully",
+            "description": "List of beat patterns",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "docs": {
+                    "beats": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Doc"
+                        "$ref": "#/components/schemas/Beat"
                       }
                     },
                     "total": {
                       "type": "integer",
-                      "description": "Total number of documentation pages"
+                      "description": "Total number of available patterns"
                     }
                   }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -81,42 +63,111 @@
         }
       },
       "post": {
-        "summary": "Create documentation page",
-        "description": "Creates a new documentation page",
+        "summary": "Create a beat pattern",
+        "description": "Validates a beat pattern and echoes it back with metadata. The sandbox is stateless - patterns are not persisted. Use this endpoint to experiment with different rhythms in the drum sequencer visualizer.",
+        "operationId": "createBeat",
+        "tags": ["Beats"],
+        "x-dubstack-preview": {
+          "type": "drum-sequencer",
+          "dataPath": "$.tracks",
+          "metaPaths": {
+            "bpm": "$.bpm",
+            "kit": "$.kit",
+            "name": "$.name"
+          },
+          "clientRender": true,
+          "fallback": "json"
+        },
         "requestBody": {
-          "description": "Documentation page to create",
+          "required": true,
+          "description": "Beat pattern to create. Each track is an array of 16 steps where 1 = hit and 0 = silence.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewDoc"
+                "$ref": "#/components/schemas/NewBeat"
+              },
+              "example": {
+                "name": "My Custom Beat",
+                "bpm": 120,
+                "kit": "tr-808",
+                "tracks": {
+                  "kick": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+                  "snare": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                  "hihat": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+                }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
-            "description": "Documentation page created successfully",
+            "description": "Beat pattern created successfully (ephemeral - not persisted)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doc"
+                  "$ref": "#/components/schemas/Beat"
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request",
+            "description": "Invalid beat pattern",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "validation_error",
+                  "message": "Track \"kick\" must have exactly 16 steps (got 8)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/beats/{id}": {
+      "get": {
+        "summary": "Get a beat pattern",
+        "description": "Returns a specific pre-seeded demo beat pattern by ID.",
+        "operationId": "getBeat",
+        "tags": ["Beats"],
+        "x-dubstack-preview": {
+          "type": "drum-sequencer",
+          "dataPath": "$.tracks",
+          "metaPaths": {
+            "bpm": "$.bpm",
+            "kit": "$.kit",
+            "name": "$.name"
+          },
+          "clientRender": true,
+          "fallback": "json"
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Beat pattern ID (e.g. classic-rock, boom-bap, four-on-floor, trap, dembow)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Beat pattern found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beat"
                 }
               }
             }
           },
-          "401": {
-            "description": "Unauthorized",
+          "404": {
+            "description": "Beat pattern not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -128,37 +179,85 @@
         }
       }
     },
-    "/docs/{id}": {
-      "delete": {
-        "summary": "Delete documentation page",
-        "description": "Deletes a documentation page by ID",
+    "/beats/{id}/play": {
+      "post": {
+        "summary": "Play a beat pattern",
+        "description": "Returns playback metadata for a beat pattern including step timing and loop configuration. Actual audio synthesis happens client-side via the Web Audio API in the drum sequencer visualizer.",
+        "operationId": "playBeat",
+        "tags": ["Beats"],
+        "x-dubstack-preview": {
+          "type": "drum-sequencer",
+          "dataPath": "$.tracks",
+          "metaPaths": {
+            "bpm": "$.bpm",
+            "kit": "$.kit",
+            "name": "$.name"
+          },
+          "clientRender": true,
+          "fallback": "json"
+        },
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of documentation page to delete",
             "required": true,
+            "description": "Beat pattern ID to play",
             "schema": {
               "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Documentation page deleted successfully"
-          },
-          "401": {
-            "description": "Unauthorized",
+          "200": {
+            "description": "Playback metadata with track data and timing",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "beat_id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "bpm": {
+                      "type": "integer"
+                    },
+                    "kit": {
+                      "type": "string"
+                    },
+                    "tracks": {
+                      "$ref": "#/components/schemas/Tracks"
+                    },
+                    "playback": {
+                      "type": "object",
+                      "properties": {
+                        "duration_ms": {
+                          "type": "integer",
+                          "description": "Total duration of one loop in milliseconds"
+                        },
+                        "step_duration_ms": {
+                          "type": "integer",
+                          "description": "Duration of each step in milliseconds"
+                        },
+                        "total_steps": {
+                          "type": "integer",
+                          "description": "Number of steps per loop (always 16)"
+                        },
+                        "loop": {
+                          "type": "boolean",
+                          "description": "Whether playback should loop"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Documentation page not found",
+            "description": "Beat pattern not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -169,26 +268,133 @@
           }
         }
       }
-    }
-  },
-  "webhooks": {
-    "/docs/webhook": {
-      "post": {
-        "summary": "Documentation page created webhook",
-        "description": "Notification sent when a new documentation page is created",
-        "requestBody": {
-          "description": "Documentation page that was created",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doc"
+    },
+    "/kits": {
+      "get": {
+        "summary": "List drum kits",
+        "description": "Returns all available drum kits with their sound definitions. Each kit contains synthesizer parameters that the frontend uses to generate audio via the Web Audio API.",
+        "operationId": "listKits",
+        "tags": ["Kits"],
+        "responses": {
+          "200": {
+            "description": "List of available drum kits",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kits": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Kit"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                }
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/kits/{id}": {
+      "get": {
+        "summary": "Get a drum kit",
+        "description": "Returns a specific drum kit with its full sound definitions.",
+        "operationId": "getKit",
+        "tags": ["Kits"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Kit ID (e.g. tr-808, acoustic, electronic)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Webhook received successfully"
+            "description": "Drum kit found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Kit not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/kits/{id}/sounds": {
+      "get": {
+        "summary": "List sounds in a kit",
+        "description": "Returns all available sounds/instruments in a specific drum kit.",
+        "operationId": "getKitSounds",
+        "tags": ["Kits"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Kit ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Kit sounds listed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kit_id": {
+                      "type": "string"
+                    },
+                    "kit_name": {
+                      "type": "string"
+                    },
+                    "sounds": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Sound"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Kit not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -196,81 +402,165 @@
   },
   "components": {
     "schemas": {
-      "Doc": {
+      "Beat": {
         "type": "object",
-        "required": [
-          "id",
-          "title",
-          "content"
-        ],
+        "required": ["id", "name", "bpm", "kit", "tracks"],
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique identifier for the documentation page"
+            "description": "Unique beat pattern identifier"
           },
-          "title": {
+          "name": {
             "type": "string",
-            "description": "Title of the documentation page"
+            "description": "Human-readable name for the pattern"
           },
-          "content": {
-            "type": "string",
-            "description": "Content of the documentation page in MDX format"
+          "bpm": {
+            "type": "integer",
+            "minimum": 40,
+            "maximum": 300,
+            "description": "Beats per minute (tempo)"
           },
-          "slug": {
+          "kit": {
             "type": "string",
-            "description": "URL-friendly slug for the page"
+            "description": "Drum kit ID used for this pattern",
+            "enum": ["tr-808", "acoustic", "electronic"]
+          },
+          "time_signature": {
+            "type": "string",
+            "default": "4/4",
+            "description": "Musical time signature"
+          },
+          "steps": {
+            "type": "integer",
+            "default": 16,
+            "description": "Number of steps in the sequence (always 16)"
+          },
+          "tracks": {
+            "$ref": "#/components/schemas/Tracks"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "description": "Duration of one loop in milliseconds"
           },
           "created_at": {
             "type": "string",
             "format": "date-time",
-            "description": "ISO 8601 timestamp of when the page was created"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "ISO 8601 timestamp of when the page was last updated"
+            "description": "ISO 8601 timestamp (for created beats only)"
           }
         }
       },
-      "NewDoc": {
+      "NewBeat": {
         "type": "object",
-        "required": [
-          "title",
-          "content"
-        ],
+        "required": ["bpm", "kit", "tracks"],
         "properties": {
-          "title": {
+          "name": {
             "type": "string",
-            "description": "Title of the documentation page"
+            "description": "Optional name for the beat pattern",
+            "default": "Untitled Beat"
           },
-          "content": {
-            "type": "string",
-            "description": "Content of the documentation page in MDX format"
+          "bpm": {
+            "type": "integer",
+            "minimum": 40,
+            "maximum": 300,
+            "description": "Beats per minute (tempo). Range: 40-300.",
+            "example": 120
           },
-          "slug": {
+          "kit": {
             "type": "string",
-            "description": "Optional URL-friendly slug. Auto-generated if not provided"
+            "description": "Drum kit to use. Must be one of the available kit IDs.",
+            "enum": ["tr-808", "acoustic", "electronic"],
+            "example": "tr-808"
+          },
+          "time_signature": {
+            "type": "string",
+            "default": "4/4",
+            "description": "Musical time signature"
+          },
+          "tracks": {
+            "$ref": "#/components/schemas/Tracks"
+          }
+        }
+      },
+      "Tracks": {
+        "type": "object",
+        "description": "Track data keyed by instrument name. Each track is an array of exactly 16 steps where 1 = hit and 0 = silence. Available instruments depend on the selected kit.",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [0, 1]
+          },
+          "minItems": 16,
+          "maxItems": 16
+        },
+        "example": {
+          "kick": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+          "snare": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          "hihat": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }
+      },
+      "Kit": {
+        "type": "object",
+        "required": ["id", "name", "sounds"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique kit identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable kit name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Kit description and typical genre usage"
+          },
+          "sounds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sound"
+            }
+          }
+        }
+      },
+      "Sound": {
+        "type": "object",
+        "required": ["id", "name", "frequency", "type", "decay"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Sound identifier used as track key in beat patterns"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable sound name"
+          },
+          "frequency": {
+            "type": "number",
+            "description": "Base frequency in Hz for the Web Audio oscillator"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["sine", "square", "triangle", "noise"],
+            "description": "Oscillator waveform type for Web Audio synthesis"
+          },
+          "decay": {
+            "type": "number",
+            "description": "Envelope decay time in seconds"
           }
         }
       },
       "Error": {
         "type": "object",
-        "required": [
-          "error",
-          "message"
-        ],
+        "required": ["error", "message"],
         "properties": {
           "error": {
             "type": "string",
-            "description": "Error code"
+            "description": "Machine-readable error code"
           },
           "message": {
             "type": "string",
-            "description": "Human-readable error message"
-          },
-          "field": {
-            "type": "string",
-            "description": "Field that caused the error (for validation errors)"
+            "description": "Human-readable error description"
           }
         }
       }
@@ -278,8 +568,19 @@
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "description": "API key from the DubStack dashboard. Required for playground access."
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Beats",
+      "description": "Create and explore drum beat patterns. Each beat is a 16-step sequence with multiple instrument tracks."
+    },
+    {
+      "name": "Kits",
+      "description": "Browse available drum kits and their sounds. Kit sound parameters are used by the frontend for Web Audio synthesis."
+    }
+  ]
 }
