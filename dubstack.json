@@ -256,7 +256,8 @@
                 "slug": "api-reference/introduction",
                 "icon": "book"
               }
-            ]
+            ],
+            "openapi": "api-reference/openapi.json"
           },
           {
             "group": "Endpoint examples",
@@ -278,9 +279,11 @@
                 "slug": "api-reference/endpoint/webhook",
                 "icon": "webhook"
               }
-            ]
+            ],
+            "openapi": "api-reference/openapi.json"
           }
-        ]
+        ],
+        "openapi": "api-reference/openapi.json"
       }
     ],
     "header": [
@@ -291,6 +294,10 @@
       {
         "label": "Quickstart",
         "href": "/quickstart"
+      },
+      {
+        "label": "API reference",
+        "href": "/api-reference"
       }
     ],
     "sidebar": [
@@ -312,11 +319,13 @@
       },
       {
         "group": "API documentation",
-        "icon": "book"
+        "icon": "book",
+        "openapi": "api-reference/openapi.json"
       },
       {
         "group": "Endpoint examples",
-        "icon": "code"
+        "icon": "code",
+        "openapi": "api-reference/openapi.json"
       }
     ]
   },
