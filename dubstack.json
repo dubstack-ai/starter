@@ -14,45 +14,7 @@
     "label": "Get Started",
     "href": "/quickstart"
   },
-  "theme": {
-    "colors": {
-      "primary": "#ff6b35",
-      "accent": "#14b8a6",
-      "background": "#0e0e10",
-      "sidebar_background": "#18171A",
-      "content_background": "#0e0e10",
-      "header_background": "#0e0e10",
-      "footer_background": "#18171A",
-      "text_primary": "#f3f4f6",
-      "text_secondary": "#a1a1aa",
-      "text_muted": "#71717a",
-      "border_default": "#ffffff14",
-      "border_subtle": "rgba(255, 255, 255, 0.06)"
-    },
-    "fonts": {
-      "heading": "Inter",
-      "body": "Inter",
-      "code": "JetBrains Mono"
-    },
-    "code_block": {
-      "background": "#0d0d0d",
-      "header_background": "#18171A",
-      "border_color": "#2d2d2d",
-      "header_height": 32,
-      "radius": 18,
-      "syntax_theme": "github-dark"
-    },
-    "inline_code": {
-      "text_dark": "#ffffff",
-      "text_light": "#18181b"
-    },
-    "scrollbar": {
-      "track_dark": "#1a1a1a",
-      "thumb_dark": "#404040",
-      "track_light": "#f0f0f0",
-      "thumb_light": "#c0c0c0"
-    }
-  },
+  "theme": "groove",
   "widgets": {
     "search": {
       "enabled": true,
@@ -428,5 +390,21 @@
     "feature_tier": "free",
     "require_auth_for_admin": true,
     "require_auth_for_docs": false
+  },
+  "theme_config": {
+    "fonts": {
+      "heading": "Inter",
+      "body": "Inter",
+      "code": "JetBrains Mono"
+    },
+    "code_block": {
+      "header_height": 32,
+      "radius": 18,
+      "syntax_theme": "github-dark"
+    },
+    "scrollbar": {
+      "width": 6,
+      "radius": 999
+    }
   }
 }
