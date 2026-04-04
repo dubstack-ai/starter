@@ -230,42 +230,15 @@
             "icon": "play",
             "openapi": "api-reference/openapi.json",
             "pages": [
-              {
-                "slug": "api-reference/endpoint/list-beats",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/create-beat",
-                "icon": "plus"
-              },
-              {
-                "slug": "api-reference/endpoint/get-beat",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/delete-beat",
-                "icon": "trash"
-              },
-              {
-                "slug": "api-reference/endpoint/play-beat",
-                "icon": "plus"
-              },
-              {
-                "slug": "api-reference/endpoint/stop-beat",
-                "icon": "plus"
-              },
-              {
-                "slug": "api-reference/endpoint/set-volume",
-                "icon": "pencil"
-              },
-              {
-                "slug": "api-reference/endpoint/set-tempo",
-                "icon": "pencil"
-              },
-              {
-                "slug": "api-reference/endpoint/export-beat",
-                "icon": "plus"
-              }
+              "GET /beats",
+              "POST /beats",
+              "GET /beats/{id}",
+              "DELETE /beats/{id}",
+              "POST /beats/{id}/play",
+              "POST /beats/{id}/stop",
+              "PUT /beats/{id}/volume",
+              "PUT /beats/{id}/tempo",
+              "POST /beats/{id}/export"
             ]
           },
           {
@@ -273,26 +246,11 @@
             "icon": "music",
             "openapi": "api-reference/openapi.json",
             "pages": [
-              {
-                "slug": "api-reference/endpoint/list-kits",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/get-kit",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/get-kit-sounds",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/configure-sound",
-                "icon": "pencil"
-              },
-              {
-                "slug": "api-reference/endpoint/create-mix",
-                "icon": "plus"
-              }
+              "GET /kits",
+              "GET /kits/{id}",
+              "GET /kits/{id}/sounds",
+              "PUT /kits/{id}/sounds/{soundId}",
+              "POST /kits/{id}/mix"
             ]
           },
           {
@@ -300,14 +258,8 @@
             "icon": "user",
             "openapi": "api-reference/openapi.json",
             "pages": [
-              {
-                "slug": "api-reference/endpoint/get-session",
-                "icon": "arrow-down"
-              },
-              {
-                "slug": "api-reference/endpoint/clear-session",
-                "icon": "trash"
-              }
+              "GET /sessions/me",
+              "DELETE /sessions/me"
             ]
           }
         ],
