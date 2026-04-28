@@ -14,6 +14,24 @@
     "label": "Get Started",
     "href": "/quickstart"
   },
+  "contextual": {
+    "enabled": true,
+    "options": [
+      "copy",
+      "view",
+      "claude",
+      "chatgpt",
+      "perplexity"
+    ],
+    "default": "copy",
+    "labels": {
+      "copy": "Copy page",
+      "view": "View as Markdown",
+      "claude": "Ask Claude",
+      "chatgpt": "Ask ChatGPT",
+      "perplexity": "Ask Perplexity"
+    }
+  },
   "theme": "groove",
   "widgets": {
     "search": {
