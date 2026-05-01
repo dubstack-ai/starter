@@ -61,7 +61,7 @@
   },
   "layout": {
     "sidebar": {
-      "width": 250,
+      "width": 288,
       "position": "left",
       "collapsible": true
     },
@@ -90,7 +90,7 @@
         "componentId": "sidebar-nav",
         "x": 0,
         "y": 56,
-        "width": 250,
+        "width": 288,
         "height": 844,
         "zIndex": 1,
         "locked": true
@@ -98,9 +98,9 @@
       {
         "instanceId": "main-content",
         "componentId": "main-content",
-        "x": 274,
+        "x": 312,
         "y": 56,
-        "width": 926,
+        "width": 888,
         "height": 844,
         "zIndex": 0,
         "locked": true
