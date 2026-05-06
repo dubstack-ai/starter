@@ -188,35 +188,39 @@
                 "icon": "file-text"
               },
               {
-                "slug": "essentials/mdx-components",
-                "icon": "shapes"
-              },
-              {
                 "slug": "essentials/code",
                 "icon": "code"
-              },
-              {
-                "slug": "essentials/tables",
-                "icon": "table"
               },
               {
                 "slug": "essentials/images",
                 "icon": "image"
               },
               {
-                "slug": "essentials/reusable-snippets",
-                "icon": "recycle"
+                "slug": "essentials/components",
+                "icon": "puzzle-piece"
               },
               {
-                "slug": "essentials/twoslash-demo",
-                "icon": "code"
+                "slug": "essentials/reusable-snippets",
+                "icon": "recycle"
               }
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Agent ready",
             "icon": "sparkles",
             "pages": [
+              {
+                "slug": "agent-ready/prompt",
+                "icon": "bot"
+              },
+              {
+                "slug": "agent-ready/visibility",
+                "icon": "eye"
+              },
+              {
+                "slug": "agent-ready/contextual",
+                "icon": "bolt"
+              },
               {
                 "slug": "ai-tools/cursor",
                 "icon": "arrow-pointer"
@@ -320,7 +324,7 @@
         "icon": "file-text"
       },
       {
-        "group": "AI tools",
+        "group": "Agent ready",
         "icon": "sparkles"
       },
       {
