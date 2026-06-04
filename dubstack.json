@@ -454,5 +454,13 @@
       "width": 6,
       "radius": 999
     }
+  },
+  "openapi": "api-reference/openapi.json",
+  "api": {
+    "openapi": "api-reference/openapi.json",
+    "baseUrl": "https://beatbox.dubstack.ai",
+    "playground": {
+      "display": "interactive"
+    }
   }
 }
