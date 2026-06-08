@@ -1,69 +1,83 @@
 ---
 title: "Local Development"
-description: "Preview changes locally before deploying to production"
+description: "Edit docs locally and publish through the Git-backed workflow"
 icon: "code"
 ---
 
 <Callout type="info">
 **Prerequisites**:
-- Node.js 18 or higher
+- Git
 - A documentation repository with a `dubstack.json` file
 </Callout>
 
-Follow these steps to install and run DubStack on your machine.
+Use local editing when you want full control over branches, reviews, and commit history. DubStack still reads from the synced repository, so local changes become visible after you push and the site finishes deploying.
 
 <Steps>
-<Step title="Install the DubStack CLI">
+<Step title="Clone the docs repository">
 
 ```bash
-npm i -g @dubstack/cli
+git clone <your-docs-repo-url>
+cd <your-docs-repo>
 ```
 </Step>
 
-<Step title="Preview locally">
-
-Navigate to your docs directory where your `dubstack.json` file is located, and run:
+<Step title="Create a branch">
 
 ```bash
-dubstack dev
+git switch -c docs/update-quickstart
+```
+</Step>
+
+<Step title="Edit content and configuration">
+
+Update MDX pages, images, snippets, or `dubstack.json`.
+
+- Use `index.mdx` for the homepage
+- Use `quickstart.mdx` for the first success path
+- Use `dubstack.json` for navigation, theme, anchors, and tabs
+- Use `api-reference/openapi.json` for API reference generation
+</Step>
+
+<Step title="Review the diff">
+
+```bash
+git diff
+git diff --check
 ```
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+Fix whitespace errors, broken paths, and accidental changes before committing.
+</Step>
+
+<Step title="Commit and push">
+
+```bash
+git add .
+git commit -m "Update docs"
+git push -u origin docs/update-quickstart
+```
 
 </Step>
 </Steps>
 
-## Custom ports
+## Verify the deployment
 
-By default, DubStack uses port 3000. You can customize the port using the `--port` flag:
+After pushing, open the dashboard Home page and watch the deployment activity. When the deployment finishes, open the live docs site and check:
 
-```bash
-dubstack dev --port 3333
-```
+- The changed page renders correctly
+- Sidebar and header links still resolve
+- Code blocks and MDX components render as expected
+- API reference pages still match the OpenAPI spec
+- Search, assistant answers, and public MCP reads return the updated content
 
-If port 3000 is already in use, DubStack will use the next available port:
+## Use the web editor for rendered previews
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+If you need a rendered preview before pushing from your local branch, open the same page in the dashboard editor. The editor lets you inspect the rendered MDX and publish through the same Git-backed flow.
 
-## CLI versions
+<Callout type="note">
+  Keep Git as the source of truth. Use the dashboard editor for rendered checks and quick edits, then rely on the deployment activity to confirm the synced version is live.
+</Callout>
 
-Each CLI release is associated with a specific version of DubStack. If your local preview does not align with production, update the CLI:
-
-```bash
-npm update -g @dubstack/cli
-```
-
-## Validating links
-
-The CLI can assist with validating links in your documentation. To identify broken links, use:
-
-```bash
-dubstack check-links
-```
-
-## Deployment
+## Deployment confirmation
 
 If the deployment is successful, you should see the following:
 
@@ -78,16 +92,13 @@ We suggest using IDE extensions that recognize and format MDX. If you're a VS Co
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Error: Cannot find module 'sharp'">
+  <Accordion title="The deployment did not pick up my change">
 
-    This may be due to an outdated version of Node.js. Try the following:
-    1. Remove the currently installed version of the CLI: `npm remove -g @dubstack/cli`
-    2. Upgrade to Node.js 18 or higher.
-    3. Reinstall the CLI: `npm i -g @dubstack/cli`
+    Confirm you pushed to the branch connected to your DubStack site, then check the dashboard deployment activity for the latest sync status.
   </Accordion>
 
-  <Accordion title="Issue: Encountering an unknown error">
+  <Accordion title="A page is missing from navigation">
 
-    Solution: delete the `~/.dubstack` folder, then run `dubstack dev` again.
+    Add the page to `dubstack.json`, commit the config change, and push again. Pages can exist in Git without being visible in navigation.
   </Accordion>
 </AccordionGroup>

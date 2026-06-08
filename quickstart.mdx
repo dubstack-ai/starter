@@ -5,43 +5,151 @@ description: "Start building polished docs in minutes"
 
 # Quickstart
 
-Start with a working docs site, make one real customization, and get your first publish out without detouring into setup debt.
+Start with a working docs site, make one real customization, preview it, and publish the change through the same Git-backed flow your team will use in production.
 
-## Get started in three steps
+## Before you begin
 
-Get your documentation running locally and make your first meaningful change.
+You need:
 
-### Step 1: Set up your local environment
+- A DubStack site created during onboarding
+- A documentation repository connected to the site, or a hosted starter repository created by the skip-Git flow
+
+<Callout type="info">
+  If you skipped Git setup during onboarding, start in the web editor first. You can connect your own repository later from Git settings without changing the content model.
+</Callout>
+
+## Understand the starter
 
 <CardGroup cols={2}>
-  <Card title="Clone your docs locally" icon="github">
-    Pull your docs repository down so you can edit MDX, config, and assets in one place.
+  <Card title="Homepage" icon="house" href="/">
+    Edit `index.mdx` to change the first page readers see.
   </Card>
-  <Card title="Start the preview server" icon="monitor">
-    Run the local preview so you can iterate on content and layout before publishing.
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Edit `quickstart.mdx` to replace this onboarding flow with your product's first success path.
+  </Card>
+  <Card title="Site configuration" icon="settings" href="/essentials/settings">
+    Edit `dubstack.json` to control navigation, theme, tabs, anchors, and global settings.
+  </Card>
+  <Card title="API reference" icon="code" href="/api-reference/introduction">
+    Replace `api-reference/openapi.json` when you are ready to document your own API.
   </Card>
 </CardGroup>
 
-### Step 2: Configure your site
+## Make your first change
+
+Choose the path that matches how you want to work.
+
+<Tabs>
+  <Tab title="Web editor">
+    <Steps>
+      <Step title="Open the editor">
+        From the dashboard, open your site and select **Editor**.
+      </Step>
+
+      <Step title="Update the introduction">
+        Open **Introduction** and update the `description` in the frontmatter.
+
+        ```mdx
+        ---
+        title: Introduction
+        description: "Your custom product description"
+        ---
+        ```
+      </Step>
+
+      <Step title="Publish the change">
+        Click **Publish** in the editor toolbar. The change is committed to your configured docs source and synced to your live site.
+      </Step>
+
+      <Step title="Verify the deployment">
+        Return to **Home** in the dashboard and wait for the deployment activity to finish. Open your live docs site and confirm the new description is visible.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Git editor">
+    <Steps>
+      <Step title="Clone your docs repository">
+        Clone the repository connected to your DubStack site.
+
+        ```bash
+        git clone <your-docs-repo-url>
+        cd <your-docs-repo>
+        ```
+      </Step>
+
+      <Step title="Edit a page">
+        Open `index.mdx` and update the frontmatter description or the first content block.
+      </Step>
+
+      <Step title="Check the diff">
+        Review the exact files you changed before publishing.
+
+        ```bash
+        git diff -- index.mdx dubstack.json
+        git diff --check
+        ```
+      </Step>
+
+      <Step title="Commit and push">
+        Push the change to the branch connected to your DubStack site.
+
+        ```bash
+        git add index.mdx
+        git commit -m "Update introduction"
+        git push
+        ```
+      </Step>
+
+      <Step title="Verify the deployment">
+        Check the dashboard activity feed, open the live site, and confirm the rendered page matches your change.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Configure your site
 
 <CardGroup cols={2}>
-  <Card title="Connect your repository" icon="link">
-    Link the repository in the dashboard so saves and publishes flow through the real Git-backed path.
+  <Card title="Navigation" icon="compass" href="/essentials/navigation">
+    Update `dubstack.json` when you add, remove, rename, or reorder pages.
   </Card>
-  <Card title="Update site name and colors" icon="palette">
-    Adjust your site metadata and theme tokens so the docs reflect your product from the start.
+  <Card title="Theme settings" icon="palette" href="/essentials/settings">
+    Set the site name, colors, logos, and documentation behavior from configuration or the dashboard.
+  </Card>
+  <Card title="Images" icon="image" href="/essentials/images">
+    Store screenshots and product images in `images/` and reference them with stable paths.
+  </Card>
+  <Card title="Reusable snippets" icon="recycle" href="/essentials/reusable-snippets">
+    Move repeated API notes, authentication steps, or warnings into snippets so updates stay consistent.
   </Card>
 </CardGroup>
 
-### Step 3: Go live
+## Wire the API reference
 
-<Card title="Publish your docs" icon="rocket">
-  Save your changes, trigger a publish, and confirm the live site reflects your latest content and navigation.
-</Card>
+This starter includes a working BeatBox OpenAPI example so the API reference and playground are usable immediately.
+
+<Steps>
+  <Step title="Open the bundled spec">
+    Review `api-reference/openapi.json` to see how endpoint pages and playground requests are generated.
+  </Step>
+
+  <Step title="Replace it with your API">
+    Swap in your own OpenAPI document when you are ready. Keep the file path stable unless you also update `dubstack.json`.
+  </Step>
+
+  <Step title="Check the generated pages">
+    Open [API documentation](/api-reference/introduction) and the [API playground](/api-reference/openapi) to confirm the reference renders correctly.
+  </Step>
+</Steps>
+
+<Callout type="note">
+  Keep `dubstack.json`, MDX pages, images, snippets, and OpenAPI specs in Git. DubStack reads the published site from the synced content artifacts, so the repository remains the source of truth.
+</Callout>
 
 ## Next steps
 
-Now that your docs are running, use these pages to deepen the site instead of keeping the starter content unchanged.
+Use these pages to replace starter content with product-specific docs.
 
 <CardGroup cols={2}>
   <Card title="Write content" icon="file-text" href="/essentials/markdown">
@@ -58,6 +166,16 @@ Now that your docs are running, use these pages to deepen the site instead of ke
   </Card>
 </CardGroup>
 
-<Callout type="note">
-  Need help? Start with the [Introduction](/), then move into [Local Development](/development) once the first docs pass is in place.
+## Validate before sharing
+
+Run these checks before sending the site to your team or customers:
+
+- The homepage and quickstart no longer contain starter-only copy
+- Navigation links resolve on the live site
+- `dubstack.json` references the right pages and OpenAPI spec
+- The API playground loads the expected base URL, endpoint list, and examples
+- Search, assistant answers, and public MCP reads return useful content instead of placeholder guidance
+
+<Callout type="tip">
+  If you are working locally, run `git diff --check` before pushing. If you are working in the dashboard, use the deployment activity on Home to confirm the publish completed.
 </Callout>
