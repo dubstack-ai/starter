@@ -1,5 +1,6 @@
 {
   "$schema": "https://dubstack.ai/dubstack.json",
+  "name": "DubStack Starter Kit",
   "site": {
     "name": "dubstack",
     "tagline": "Beautiful, AI-powered documentation for modern teams",
