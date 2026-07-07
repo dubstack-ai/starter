@@ -11,9 +11,12 @@
     "favicon": "/img/favicon.ico",
     "timezone": "UTC"
   },
-  "topbarCtaButton": {
-    "label": "Get Started",
-    "href": "/quickstart"
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "/quickstart"
+    }
   },
   "contextual": {
     "enabled": true,
