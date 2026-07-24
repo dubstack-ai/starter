@@ -13,7 +13,7 @@ DubStack supports various ways to embed images, videos, and other media in your 
 The standard [Markdown syntax](https://www.markdownguide.org/basic-syntax/#images) for images:
 
 ```markdown
-![DubStack Dashboard](/images/checks-passed.png)
+![Documentation checks completed successfully](/images/checks-passed.png)
 ```
 
 <Callout type="info">
@@ -27,7 +27,7 @@ For more control over image display:
 ```html
 <img
   src="/images/checks-passed.png"
-  alt="DubStack Dashboard"
+  alt="Documentation checks completed successfully"
   style={{ borderRadius: '0.5rem' }}
 />
 ```
@@ -49,37 +49,15 @@ Keep image file sizes under 5MB for best performance. For larger files, use an i
 
 Add captions to provide context:
 
-<Frame caption="The DubStack Theme Studio lets you customize colors and fonts visually">
-  <img src="/images/checks-passed.png" alt="Theme Studio interface" />
+<Frame caption="A successful documentation validation run">
+  <img src="/images/checks-passed.png" alt="Documentation checks completed successfully" />
 </Frame>
 
 ```mdx
-<Frame caption="The DubStack Theme Studio lets you customize colors and fonts visually">
-  <img src="/images/checks-passed.png" alt="Theme Studio interface" />
+<Frame caption="A successful documentation validation run">
+  <img src="/images/checks-passed.png" alt="Documentation checks completed successfully" />
 </Frame>
 ```
-
-## Image galleries
-
-Use the gallery block when a single image is not enough to explain the flow:
-
-<Gallery>
-  <GalleryItem src="/images/hero-light.png" alt="Starter homepage hero in light mode" />
-  <GalleryItem src="/images/hero-dark.png" alt="Starter homepage hero in dark mode" />
-  <GalleryItem src="/images/checks-passed.png" alt="Dashboard checks panel after a successful run" />
-</Gallery>
-
-````mdx
-<Gallery>
-  <GalleryItem src="/images/hero-light.png" alt="Starter homepage hero in light mode" />
-  <GalleryItem src="/images/hero-dark.png" alt="Starter homepage hero in dark mode" />
-  <GalleryItem src="/images/checks-passed.png" alt="Dashboard checks panel after a successful run" />
-</Gallery>
-````
-
-<Callout type="note">
-Use `/gallery` in the editor to insert the block, then replace the starter images with your own product shots or walkthrough frames.
-</Callout>
 
 ## Dark mode images
 
@@ -88,7 +66,7 @@ Show different images for light and dark mode:
 ```html
 <picture>
   <source srcset="/images/checks-passed.png" media="(prefers-color-scheme: dark)" />
-  <img src="/images/checks-passed.png" alt="DubStack Dashboard" />
+  <img src="/images/checks-passed.png" alt="Documentation checks completed successfully" />
 </picture>
 ```
 
@@ -146,7 +124,7 @@ Host large video files on a CDN or video platform like YouTube, Vimeo, or Cloudf
 Animated GIFs work the same as regular images:
 
 ```markdown
-![Feature demonstration](/images/demo.gif)
+![Feature demonstration](/path/demo.gif)
 ```
 
 <Callout type="warning">
@@ -158,8 +136,8 @@ Animated GIFs can be large. Consider using video formats (MP4, WebM) for better 
 DubStack uses [Lucide icons](https://lucide.dev) throughout the platform. Reference them by name in components:
 
 ```mdx
-<Card title="Documentation" icon="book" href="/docs">
-  Browse the complete documentation
+<Card title="Quickstart" icon="book" href="/quickstart">
+  Make your first documentation change
 </Card>
 ```
 
@@ -181,19 +159,17 @@ DubStack supports Mermaid for creating diagrams:
 
 ```mermaid
 graph LR
-    A[User] --> B[DubStack]
-    B --> C[Git Repository]
-    C --> D[R2 Storage]
-    D --> E[Documentation Site]
+    A[Writer] --> B[Git repository]
+    B --> C[Documentation site]
+    C --> D[Reader]
 ```
 
 ````markdown
 ```mermaid
 graph LR
-    A[User] --> B[DubStack]
-    B --> C[Git Repository]
-    C --> D[R2 Storage]
-    D --> E[Documentation Site]
+    A[Writer] --> B[Git repository]
+    B --> C[Documentation site]
+    C --> D[Reader]
 ```
 ````
 
@@ -232,7 +208,7 @@ Embed SVG diagrams directly:
 Always include descriptive alt text for images:
 
 ```markdown
-![Screenshot of the DubStack Theme Studio showing color customization options](/images/theme-studio.png)
+![Documentation checks completed successfully](/images/checks-passed.png)
 ```
 
 <Callout type="success">

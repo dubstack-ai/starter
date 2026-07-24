@@ -32,9 +32,10 @@ AI tools need exact names, constraints, and paths. Add a compact context section
 ## Agent context
 
 - Config file: `dubstack.json`
-- Source of truth: Git repository synced to R2
-- Publish path: Git push -> sync worker -> R2 -> frontend cache invalidation
-- Do not write generated docs directly to R2
+- Source of truth: the documentation repository
+- Publish path: reviewed Git changes on the connected branch
+- Keep navigation changes synchronized with the page files
+- Do not invent commands, limits, or product behavior
 ```
 
 ## Avoid hidden assumptions

@@ -415,7 +415,7 @@
   },
   "seo": {
     "title_template": "%s | dubstack",
-    "description": "Beautiful, AI-powered documentation platform for modern teams. Create stunning docs with OpenAPI support, Theme Studio, and MCP server integration.",
+    "description": "A developer documentation starter with OpenAPI examples, reusable components, and AI-ready guidance.",
     "og_image": "/images/hero-light.png"
   },
   "integrations": {
