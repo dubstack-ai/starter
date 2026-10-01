@@ -4,6 +4,7 @@
   "site": {
     "name": "dubstack",
     "tagline": "Beautiful, AI-powered documentation for modern teams",
+    "show_brand": false,
     "logo": {
       "light": "/logo/light.svg",
       "dark": "/logo/dark.svg"
